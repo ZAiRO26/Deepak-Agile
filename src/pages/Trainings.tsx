@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Trainings from "@/components/Trainings";
-import Contact from "@/components/Contact";
+
+import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export default function TrainingsPage() {
@@ -19,7 +20,8 @@ export default function TrainingsPage() {
         </div>
       </div>
       <Trainings />
-      <Contact />
+
+      <CTA />
       <Footer />
     </div>
   );

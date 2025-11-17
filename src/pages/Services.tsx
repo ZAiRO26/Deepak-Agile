@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Services from "@/components/Services";
-import Contact from "@/components/Contact";
+
+import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export default function ServicesPage() {
@@ -19,7 +20,8 @@ export default function ServicesPage() {
         </div>
       </div>
       <Services />
-      <Contact />
+
+      <CTA />
       <Footer />
     </div>
   );

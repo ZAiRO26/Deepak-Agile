@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import { Award, Users, BookOpen, Target, TrendingUp, Lightbulb } from 'lucide-react';
 
@@ -150,23 +151,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Ready to Transform Your Organization?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Let's discuss how we can help your teams achieve business agility and deliver exceptional results.
-          </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg"
-          >
-            Start Your Transformation Journey
-          </a>
-        </div>
-      </section>
+      <CTA />
 
       <Footer />
     </div>
