@@ -1,11 +1,13 @@
 import Navigation from "@/components/Navigation";
 import Contact from "@/components/Contact";
+import Meta from "@/components/Meta";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
+      <Meta title="Contact" description="Get in touch with Deepak Nailwal for agile consulting and training inquiries." />
       <Navigation />
       <div className="pt-20 pb-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

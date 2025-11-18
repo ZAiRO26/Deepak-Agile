@@ -1,12 +1,13 @@
 import Navigation from "@/components/Navigation";
 import Services from "@/components/Services";
-
+import Meta from "@/components/Meta";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-white">
+      <Meta title="Services" description="Explore our comprehensive agile coaching and training services." />
       <Navigation />
       <div className="pt-20 pb-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

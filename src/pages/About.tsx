@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import Meta from "@/components/Meta";
 import { Award, Users, BookOpen, Target, TrendingUp, Lightbulb } from 'lucide-react';
 
 export default function AboutPage() {
@@ -31,6 +32,7 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Meta title="About" description="Learn more about Deepak Nailwal, an expert agile coach and SAFe® trainer." />
       <Navigation />
       
       {/* Hero Section */}

@@ -9,6 +9,14 @@ const Navigation: React.FC = () => {
     { name: 'Services', href: '/services' },
     { name: 'Trainings', href: '/trainings' },
     { name: 'About', href: '/about' },
+    { name: 'Scrum Quizzes', href: '/quizzes', dropdown: [
+      { name: 'Scrum Master (LM)', href: '/quizzes/sm-lm' },
+      { name: 'Scrum Master (RM)', href: '/quizzes/sm-rm' },
+      { name: 'Product Owner (LM)', href: '/quizzes/po-lm' },
+      { name: 'Product Owner (RM)', href: '/quizzes/po-rm' },
+      { name: 'Scaled Scrum (LM)', href: '/quizzes/scaled-lm' },
+      { name: 'SPS™ Preparation', href: '/quizzes/sps-prep' },
+    ] },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -30,17 +38,42 @@ const Navigation: React.FC = () => {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-                >
-                  {item.name}
-                </a>
+                // @ts-ignore
+                item.dropdown ? (
+                  <div key={item.name} className="relative group">
+                    <a
+                      href={item.href}
+                      className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                    >
+                      {item.name}
+                    </a>
+                    <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition">
+                      <div className="py-2">
+                        {/** @ts-ignore */}
+                        {item.dropdown.map((sub: any) => (
+                          <a
+                            key={sub.name}
+                            href={sub.href}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700"
+                          >
+                            {sub.name}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                  >
+                    {item.name}
+                  </a>
+                )
               ))}
             </div>
           </div>
@@ -62,14 +95,34 @@ const Navigation: React.FC = () => {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
             {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.name}
-              </a>
+              // @ts-ignore
+              item.dropdown ? (
+                <div key={item.name}>
+                  <div className="px-3 py-2 text-gray-700 font-semibold">{item.name}</div>
+                  <div className="ml-2">
+                    {/** @ts-ignore */}
+                    {item.dropdown.map((sub: any) => (
+                      <a
+                        key={sub.name}
+                        href={sub.href}
+                        className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {sub.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </a>
+              )
             ))}
           </div>
         </div>
