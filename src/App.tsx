@@ -7,10 +7,12 @@ import Contact from "@/pages/Contact";
 import Quizzes from "@/pages/Quizzes";
 import QuizPage from "@/pages/Quiz";
 import QuizSummary from "@/pages/QuizSummary";
+import FloatingButtons from "@/components/FloatingButtons";
 
 export default function App() {
   return (
     <Router>
+      <FloatingButtons />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />

@@ -6,20 +6,28 @@ import Footer from "@/components/Footer";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-cream">
       <Meta title="Contact" description="Get in touch with Deepak Nailwal for agile consulting and training inquiries." />
       <Navigation />
-      <div className="pt-20 pb-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-8 bg-cream relative overflow-hidden">
+        <div className="absolute inset-0 bg-pattern"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl"></div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-accent font-medium tracking-wider uppercase text-sm">Get Started</span>
+          <h1 className="font-display text-5xl md:text-6xl font-bold text-charcoal mt-4 mb-6">
             Contact Us
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to transform your organization with agile training? Let's discuss your specific needs 
+          <div className="section-divider"></div>
+          <p className="text-xl text-slate max-w-3xl mx-auto">
+            Ready to transform your organization with agile training? Let's discuss your specific needs
             and create a customized training plan for your team.
           </p>
         </div>
-      </div>
+      </section>
+
       <Contact />
       <CTA />
       <Footer />

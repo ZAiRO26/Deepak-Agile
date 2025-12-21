@@ -1,147 +1,167 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Twitter, Youtube, Award, Briefcase } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
+  const quickLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services' },
+    { name: 'Trainings', href: '/trainings' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
+  ];
+
+  const services = [
+    { name: 'Agile Transformation', href: '/services' },
+    { name: 'SAFe® Training', href: '/trainings' },
+    { name: 'Team Coaching', href: '/services' },
+    { name: 'Executive Coaching', href: '/services' },
+  ];
+
+  const certifications = ['SAFe® SPC', 'CSM®', 'ICAgile', 'PMP®'];
+
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="space-y-4">
+    <footer className="relative bg-dark overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-dark via-dark-light to-navy"></div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main Footer Content */}
+        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Brand Column */}
+          <div className="space-y-6">
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">D</span>
+              <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
+                <Briefcase className="w-6 h-6 text-white" />
               </div>
-              <span className="ml-3 text-xl font-bold">
-                Deepak <span className="text-blue-400">Nailwal</span>
-              </span>
+              <div className="ml-4">
+                <span className="text-xl font-bold text-white">
+                  Deepak <span className="text-accent">Nailwal</span>
+                </span>
+                <span className="block text-xs text-white/60 font-semibold uppercase tracking-wider">
+                  Agile Coach & Trainer
+                </span>
+              </div>
             </div>
-            <p className="text-gray-300 leading-relaxed">
-              Expert SAFe® Agile Coach and Trainer helping organizations achieve business agility 
-              through comprehensive training and consulting services.
+            <p className="text-white/60 leading-relaxed">
+              Transforming organizations through SAFe® methodology and agile best practices.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
-                <Linkedin className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
-                <Twitter className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
-                <Github className="h-6 w-6" />
-              </a>
+
+            {/* Certifications */}
+            <div className="flex flex-wrap gap-2">
+              {certifications.map((cert) => (
+                <span
+                  key={cert}
+                  className="inline-flex items-center px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold text-white/80"
+                >
+                  <Award className="w-3 h-3 mr-1 text-accent" />
+                  {cert}
+                </span>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="/" className="text-gray-300 hover:text-blue-400 transition-colors duration-200">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="/services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="/trainings" className="text-gray-300 hover:text-blue-400 transition-colors duration-200">
-                  Trainings
-                </a>
-              </li>
-              <li>
-                <a href="/about" className="text-gray-300 hover:text-blue-400 transition-colors duration-200">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="text-gray-300 hover:text-blue-400 transition-colors duration-200">
-                  Contact
-                </a>
-              </li>
+          <div>
+            <h4 className="text-white font-bold uppercase tracking-wider mb-6">Quick Links</h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="text-white/60 hover:text-accent transition-colors font-medium"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Services */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white">Our Services</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="/services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200">
-                  SAFe® Training
-                </a>
-              </li>
-              <li>
-                <a href="/services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200">
-                  Agile Coaching
-                </a>
-              </li>
-              <li>
-                <a href="/services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200">
-                  Organizational Consulting
-                </a>
-              </li>
-              <li>
-                <a href="/services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200">
-                  Corporate Training
-                </a>
-              </li>
-              <li>
-                <a href="/services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200">
-                  Mentoring Programs
-                </a>
-              </li>
+          <div>
+            <h4 className="text-white font-bold uppercase tracking-wider mb-6">Services</h4>
+            <ul className="space-y-3">
+              {services.map((service) => (
+                <li key={service.name}>
+                  <a
+                    href={service.href}
+                    className="text-white/60 hover:text-accent transition-colors font-medium"
+                  >
+                    {service.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white">Contact Info</h3>
-            <div className="space-y-3">
-              <div className="flex items-start">
-                <Mail className="h-5 w-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" />
-                <span className="text-gray-300 text-sm">
-                  deepak@deepaknailwal.com
+          {/* Contact */}
+          <div>
+            <h4 className="text-white font-bold uppercase tracking-wider mb-6">Contact</h4>
+            <ul className="space-y-4">
+              <li>
+                <a
+                  href="mailto:deepak@agilecoach.com"
+                  className="flex items-center text-white/60 hover:text-accent transition-colors"
+                >
+                  <Mail className="w-5 h-5 mr-3 text-accent" />
+                  deepak@agilecoach.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+919560782645"
+                  className="flex items-center text-white/60 hover:text-accent transition-colors"
+                >
+                  <Phone className="w-5 h-5 mr-3 text-accent" />
+                  +91 95607 82645
+                </a>
+              </li>
+              <li>
+                <span className="flex items-start text-white/60">
+                  <MapPin className="w-5 h-5 mr-3 text-accent flex-shrink-0" />
+                  Delhi NCR, India
                 </span>
-              </div>
-              <div className="flex items-start">
-                <Phone className="h-5 w-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" />
-                <span className="text-gray-300 text-sm">
-                  +91 98765 43210
-                </span>
-              </div>
-              <div className="flex items-start">
-                <MapPin className="h-5 w-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" />
-                <span className="text-gray-300 text-sm">
-                  New Delhi, India
-                  <br />
-                  Available worldwide
-                </span>
-              </div>
+              </li>
+            </ul>
+
+            {/* Social Links */}
+            <div className="flex gap-3 mt-6">
+              <a
+                href="#"
+                className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white/60 hover:bg-accent hover:text-white transition-all"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white/60 hover:bg-accent hover:text-white transition-all"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white/60 hover:bg-accent hover:text-white transition-all"
+              >
+                <Youtube className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 text-sm">
+        {/* Bottom Bar */}
+        <div className="py-6 border-t border-white/10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-white/40 text-sm">
               © {currentYear} Deepak Nailwal. All rights reserved.
-            </div>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-200">
+            </p>
+            <div className="flex gap-6 text-sm">
+              <a href="#" className="text-white/40 hover:text-accent transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-200">
+              <a href="#" className="text-white/40 hover:text-accent transition-colors">
                 Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-200">
-                Cookie Policy
               </a>
             </div>
           </div>

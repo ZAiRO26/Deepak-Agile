@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Users, Award, CheckCircle, Calendar, ArrowRight } from 'lucide-react';
+import { Clock, Users, CheckCircle, ArrowRight, Sparkles } from 'lucide-react';
 
 const Trainings: React.FC = () => {
   const trainings = [
@@ -7,7 +7,7 @@ const Trainings: React.FC = () => {
       title: 'SAFe® Scrum Master (SSM)',
       description: 'Learn to facilitate Agile development, foster collaboration, and manage conflicts in a SAFe® environment.',
       duration: '2 Days',
-      level: 'Beginner',
+      level: 'Foundation',
       price: '₹24,999',
       features: [
         'SAFe® Scrum Master certification',
@@ -52,7 +52,7 @@ const Trainings: React.FC = () => {
       level: 'Advanced',
       price: '₹27,999',
       features: [
-        'Advanced Scrum Master certification',
+        'Advanced SM certification',
         'Multi-team coordination',
         'DevOps practices',
         'Kanban integration'
@@ -63,7 +63,7 @@ const Trainings: React.FC = () => {
       title: 'SAFe® for Teams (SP)',
       description: 'Build the skills needed to become a high-performing team member in a SAFe® organization.',
       duration: '2 Days',
-      level: 'Beginner',
+      level: 'Foundation',
       price: '₹23,999',
       features: [
         'SAFe® Practitioner certification',
@@ -80,8 +80,8 @@ const Trainings: React.FC = () => {
       level: 'Intermediate',
       price: '₹25,999',
       features: [
-        'SAFe® DevOps Practitioner certification',
-        'Continuous delivery pipeline',
+        'SAFe® DevOps certification',
+        'CI/CD pipeline',
         'Automation strategies',
         'Release management'
       ],
@@ -89,16 +89,30 @@ const Trainings: React.FC = () => {
     }
   ];
 
+  const getLevelColor = (level: string) => {
+    switch (level) {
+      case 'Foundation': return 'bg-emerald-100 text-emerald-700';
+      case 'Intermediate': return 'bg-amber-100 text-amber-700';
+      case 'Advanced': return 'bg-purple-100 text-purple-700';
+      default: return 'bg-gray-100 text-gray-700';
+    }
+  };
+
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-cream relative overflow-hidden">
+      {/* Background Decoration */}
+      <div className="absolute bottom-0 left-0 w-1/3 h-full bg-gradient-to-r from-accent/5 to-transparent"></div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Popular SAFe® Trainings
+          <span className="text-accent font-medium tracking-wider uppercase text-sm">Certification Programs</span>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-charcoal mt-4 mb-6">
+            SAFe® Training Programs
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Choose from our comprehensive range of SAFe® certification trainings designed to accelerate 
+          <div className="section-divider"></div>
+          <p className="text-xl text-slate max-w-3xl mx-auto">
+            Choose from our comprehensive range of SAFe® certification trainings designed to accelerate
             your agile journey and enhance your professional credentials.
           </p>
         </div>
@@ -108,89 +122,94 @@ const Trainings: React.FC = () => {
           {trainings.map((training, index) => (
             <div
               key={index}
-              className={`relative rounded-xl border-2 p-8 transition-all duration-300 hover:shadow-xl ${
-                training.popular
-                  ? 'border-blue-600 bg-blue-50 shadow-lg'
-                  : 'border-gray-200 bg-white hover:border-blue-300'
-              }`}
+              className={`relative bg-white rounded-2xl p-8 transition-all duration-300 hover:shadow-premium hover:-translate-y-2 ${training.popular
+                ? 'border-2 border-accent shadow-accent'
+                : 'border border-cream-darker shadow-soft'
+                }`}
             >
+              {/* Popular Badge */}
               {training.popular && (
-                <div className="absolute -top-3 left-6 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                <div className="absolute -top-4 left-6 badge-premium">
+                  <Sparkles className="w-3 h-3 mr-1" />
                   Most Popular
                 </div>
               )}
 
+              {/* Header */}
               <div className="mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="font-display text-xl font-bold text-charcoal mb-3">
                   {training.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-slate text-sm leading-relaxed">
                   {training.description}
                 </p>
               </div>
 
-              {/* Training Details */}
-              <div className="flex items-center justify-between mb-6 text-sm">
-                <div className="flex items-center text-gray-600">
-                  <Clock className="h-4 w-4 mr-2" />
+              {/* Meta Info */}
+              <div className="flex items-center gap-4 mb-6 text-sm">
+                <div className="flex items-center text-slate">
+                  <Clock className="h-4 w-4 mr-1.5 text-accent" />
                   {training.duration}
                 </div>
-                <div className="flex items-center text-gray-600">
-                  <Users className="h-4 w-4 mr-2" />
+                <span className={`px-3 py-1 rounded-full text-xs font-medium ${getLevelColor(training.level)}`}>
                   {training.level}
-                </div>
+                </span>
               </div>
 
               {/* Features */}
-              <ul className="space-y-2 mb-6">
+              <ul className="space-y-3 mb-8">
                 {training.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-3 flex-shrink-0" />
+                  <li key={featureIndex} className="flex items-start text-sm text-slate">
+                    <CheckCircle className="h-4 w-4 text-accent mt-0.5 mr-3 flex-shrink-0" />
                     {feature}
                   </li>
                 ))}
               </ul>
 
               {/* Price and CTA */}
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between pt-6 border-t border-cream-darker">
                 <div>
-                  <span className="text-2xl font-bold text-blue-600">
+                  <span className="font-display text-2xl font-bold text-charcoal">
                     {training.price}
                   </span>
-                  <span className="text-sm text-gray-500 ml-1">per person</span>
+                  <span className="text-sm text-slate ml-1">/ person</span>
                 </div>
-                <button className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200">
-                  Book Now
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </button>
+                <a
+                  href="/contact"
+                  className={`btn-premium ${training.popular ? 'btn-accent' : 'btn-outline-accent'} !py-2 !px-4 text-sm`}
+                >
+                  Enroll
+                  <ArrowRight className="ml-1 h-4 w-4" />
+                </a>
               </div>
             </div>
           ))}
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center mt-16 bg-gray-50 rounded-2xl p-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Looking for Corporate Training?
-          </h3>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            We offer customized corporate training programs for your entire organization. 
-            Get special pricing and flexible scheduling for teams of 10 or more.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contact"
-              className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
-            >
-              <Calendar className="mr-2 h-5 w-5" />
-              Schedule Corporate Training
-            </a>
-            <a
-              href="/contact"
-              className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg border-2 border-blue-600 hover:bg-blue-50 transition-colors duration-200"
-            >
-              Get Custom Quote
-            </a>
+        {/* Corporate Training CTA */}
+        <div className="mt-20 bg-navy rounded-3xl p-12 text-center relative overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-accent rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="relative">
+            <h3 className="font-display text-3xl font-bold text-white mb-4">
+              Looking for Corporate Training?
+            </h3>
+            <p className="text-white/80 mb-8 max-w-2xl mx-auto">
+              We offer customized corporate training programs for your entire organization.
+              Get special pricing and flexible scheduling for teams of 10 or more.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/contact" className="btn-premium bg-accent text-navy hover:bg-accent-light">
+                Schedule Corporate Training
+              </a>
+              <a href="/contact" className="btn-premium border-2 border-white text-white hover:bg-white/10">
+                Get Custom Quote
+              </a>
+            </div>
           </div>
         </div>
       </div>
